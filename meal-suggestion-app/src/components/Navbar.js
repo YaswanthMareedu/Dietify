@@ -2,39 +2,56 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NavBarContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #388e3c; /* Dark green */
-  padding: 15px;
-  color: #ffffff;
-  position: relative;
+const Nav = styled.nav`
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  padding: 20px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+`;
+
+const NavLogo = styled.a`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+`;
+
+const NavLinks = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
-  color: #ffffff;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  margin-left: 30px;
+  font-size: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.3s;
 
   &:hover {
-    background-color: #4caf50; /* Lighter green on hover */
+    color: var(--primary-color);
   }
 `;
 
 const Navbar = () => {
   return (
-    <NavBarContainer>
-      <NavLink href="#home">Home</NavLink>
-      <NavLink href="#about">About</NavLink>
-      <NavLink href="#contact">Contact</NavLink>
-      <NavLink href="#services">Services</NavLink>
-    </NavBarContainer>
+    <Nav>
+      <NavLogo href="#home">Meal Mentor</NavLogo>
+      <NavLinks>
+        <NavLink href="#home">Home</NavLink>
+        <NavLink href="#about">Why Choose Us</NavLink>
+        <NavLink href="#services">Services</NavLink>
+        <NavLink href="#contact">Contact</NavLink>
+      </NavLinks>
+    </Nav>
   );
 };
 
 export default Navbar;
-
