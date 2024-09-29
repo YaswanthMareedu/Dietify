@@ -1,10 +1,11 @@
 /* App.css */
+
 :root {
-  --primary-color: #4A90E2;
-  /* Soft blue */
-  --secondary-color: #FFFFFF;
+  --primary-color: #ff6f61;
+  /* Vibrant coral */
+  --secondary-color: #ffffff;
   /* White */
-  --accent-color: #F5F5F5;
+  --accent-color: #f0f0f0;
   /* Light gray */
   --text-color: #333333;
   /* Dark gray */
@@ -37,81 +38,174 @@ img {
   text-align: center;
 }
 
-.App-logo {
-  width: 150px;
-  margin: 20px 0;
+/* Navbar Styles */
+nav {
+  width: 100%;
+  background-color: var(--secondary-color);
+  padding: 15px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+nav a {
+  margin-left: 20px;
+  font-size: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+nav .nav-logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+nav .nav-logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: linear-gradient(to right, var(--primary-color), #ff8a75);
+  color: #ffffff;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section::after {
+  content: '';
+  background-image: url('https://source.unsplash.com/1600x900/?healthy-food');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.hero-section .App-logo {
+  width: 120px;
+  margin-bottom: 20px;
   animation: fadeInDown 1s ease-in-out;
 }
 
-h1,
-h2,
-h3 {
-  margin: 10px 0;
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: 500;
-  color: #555555;
-  /* Medium gray */
-}
-
-h3 {
+.hero-section h2 {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 300;
+  margin-bottom: 40px;
 }
 
-p {
-  max-width: 600px;
-  line-height: 1.6;
-  color: #666666;
-}
-
-section {
-  padding: 60px 20px;
-}
-
-#home,
-#contact,
-#services {
-  background-color: var(--secondary-color);
-}
-
-#about {
-  background-color: var(--accent-color);
-}
-
-button {
-  background-color: var(--primary-color);
-  color: #ffffff;
+.hero-section .cta-button {
+  background-color: #ffffff;
+  color: var(--primary-color);
   padding: 15px 30px;
-  border: none;
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  background-color: #357ABD;
+.hero-section .cta-button:hover {
+  background-color: #ffeae6;
+  transform: scale(1.05);
 }
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+/* Features Section */
+.features-section {
+  padding: 80px 20px;
+  background-color: var(--accent-color);
+}
+
+.features-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  border-radius: 10px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+h2.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h2.section-title::after {
+  content: '';
+  width: 50%;
+  height: 3px;
+  background-color: var(--primary-color);
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+}
+
+p {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Chatbot Section */
+#chatbot {
+  padding: 80px 20px;
 }
 
 /* Animations */
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 
   to {
@@ -120,17 +214,50 @@ html {
   }
 }
 
-/* Responsive Typography */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-logo:hover {
+  animation: rotate 2s infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  .hero-section {
+    padding: 100px 20px 60px;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  .hero-section h1 {
+    font-size: 2.5rem;
   }
 
-  .App-logo {
-    width: 120px;
+  .hero-section h2 {
+    font-size: 1.2rem;
   }
+
+  .feature-card {
+    width: 100%;
+  }
+
+  nav {
+    padding: 10px 20px;
+  }
+
+  nav .nav-links {
+    display: none;
+  }
+
+  /* Add your mobile menu styles here if needed */
 }
